@@ -1,0 +1,55 @@
+<!-- <table class="table" >
+  <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th> Name </th>
+      <th> Price </th>
+      <th> Units in Stock </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor=" let tempProduct of protects">
+      <td class="align-middle">
+        <img src="{{ tempProduct.imageUrl }}" height="50" />
+      </td>
+      <td> {{ tempProduct.name }}</td>
+      <td> {{ tempProduct.unitPrice | currency:'USD' }}</td>
+      <td> {{ tempProduct.unitsInStock }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<div class="main-content">
+  <div class="section-content selection-contatent-p30">
+    <h4>Category: {{ currentCategoryName }}</h4>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- loop over the collection of products -->
+        <div *ngFor=" let tempProduct of protects" class="col-md-3">
+          <div class="product-box">
+            <div class="card" style="width: 18rem;">
+              <a routerLink="/product/{{ tempProduct.id }}">
+                <img class="card-img-top" src="{{ tempProduct.imageUrl }}" style="width: 200px; height: 200px;">
+              </a>
+              <div class="card-body">
+                <a routerLink="/product/{{ tempProduct.id }}">
+                  <h1 class="card-title">{{ tempProduct.name }}</h1>
+                </a>
+                <p class="card-text">{{ tempProduct.description }}</p>
+                <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- if products empty then display a message -->
+
+        <div *ngIf="protects?.length == 0" class="alert alert-warning col-md-12" role="alert">
+          No product Found.....!
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
